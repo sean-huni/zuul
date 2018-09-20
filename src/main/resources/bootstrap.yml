@@ -1,0 +1,31 @@
+---
+# Items that apply to ALL profiles:
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.0.5:8001/eureka/
+
+---
+spring:
+  application:
+    name: zuul
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8002
+      name: zuul
+
+server:
+  port: 8005
+
+# Ports:
+#  sciroc-web --- 8000
+#  Eureka: ------ 8001
+#  Config: ------ 8002
+#  leader-data -- 8003
+#  leaderboard -- 8004
+#  zuul-gateway - 8005
+#  game --------- 8006
+#  rabbit-mq ---- <host-ip>:5672 (On a different machine under the same network)
+#  zipkin ------- <host-ip>:9411 (On a different machine under the same network)
