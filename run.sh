@@ -17,7 +17,7 @@ tagAndPush(){
 rebuild(){
     gradle clean
     gradle build
-    docker build -f Dockerfile -t zuul-img .
+    docker build -f Dockerfile -t zuul-img . --no-cache
     tagAndPush
 }
 

@@ -1,9 +1,11 @@
 ---
 # Items that apply to ALL profiles:
 eureka:
+  instance:
+    hostname: 10.133.33.126
   client:
     serviceUrl:
-      defaultZone: http://192.168.0.5:8001/eureka/
+      defaultZone: http://${eureka.instance.hostname}:8001/eureka/
 
 ---
 spring:
@@ -13,7 +15,7 @@ spring:
     active: dev
   cloud:
     config:
-      uri: http://localhost:8002
+      uri: http://10.133.33.126:8002/
       name: zuul
 
 server:
@@ -29,3 +31,23 @@ server:
 #  game --------- 8006
 #  rabbit-mq ---- <host-ip>:5672 (On a different machine under the same network)
 #  zipkin ------- <host-ip>:9411 (On a different machine under the same network)
+
+
+
+#zuul:
+#  host:
+#    connect-timeout-millis: 10000
+#    socket-timeout-millis: 10000
+#    time-to-live: 500000
+
+#hystrix:
+#  game-match:
+#    execution:
+#      isolation:
+#        thread:
+#          timeoutInMilliseconds: 10000
+#  game-engine:
+#    execution:
+#      isolation:
+#        thread:
+#          timeoutInMilliseconds: 10000
